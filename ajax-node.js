@@ -9,16 +9,17 @@ var AjaxNode = function() {}; // google closure compile magic
 	
 	AjaxNode.DoCmd = function(opt, afterFn) {
 		
-		//var content = opt.content && Encoder.Encode64(opt.content);
+		var data = {
+			"script": opt.script
+		};
+		var content64 = opt.content && window.btoa && btoa(opt.content) || '';
+		content64 ? data["content64"] = content64 : data["content"] = opt.content || '';
 		
 		$.ajax({
 			"url": 'ajax-node.php',
 			"type": 'POST',
 			"dataType": 'json',
-			"data": {
-				"script": opt.script,
-				"content": opt.content || ''
-			},
+			"data": data,
 			"success": function(ret) {
 				if (afterFn) {
 					if (!ret || !ret.result)
