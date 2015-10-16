@@ -16,6 +16,7 @@
 		if ($('button:contains(Go)')['length'] > 0) {
 			$('button:contains(Go),a:contains(Rerun)')['click'](function() {
 				sessionStorage['QUintGo'] = 'y';
+				$(document).trigger('QUnitGo');
 			});
 			clearInterval(qTmr);
 		}
@@ -91,6 +92,49 @@
 			done();
 		});
 	});
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// MySql tests - auto skipped when no mysql user and password given
 
+	var qTest = QUnit.test;
+	
+	$(document).on('QUnitGo', function() {
+		var user = $('#mysql_qunit_uu').val() || sessionStorage['QUnitMysqlUser'];
+		var password = $('#mysql_qunit_pp').val() || sessionStorage['QUnitMysqlPassword'];
+		sessionStorage['QUnitMysqlUser'] = user;
+		sessionStorage['QUnitMysqlPassword'] = password;
+	});
+
+	var user = sessionStorage['QUnitMysqlUser'];
+	var password = sessionStorage['QUnitMysqlPassword'];
+	$('#mysql_qunit_uu').val(user);
+	$('#mysql_qunit_pp').val(password);
+		
+	if (!user || !password) {
+		QUnit.test = QUnit.skip;
+	}
+		
+	QUnit.module("Test node mysql");
+
+	QUnit.test("bvt - read databases", function(p) {
+		
+		var done = p.async();
+		
+		AjaxNode.DoCmd({
+			"dataType": 'json',
+			"script": 'test-js/mysql-database.js',
+			"content": JSON.stringify({
+				"user": user,
+				"password": password
+			})
+		}, function(data) {
+			var res = JSON.stringify(data && data['queryResult'] || '"x"');
+			var has = res.indexOf('[{"Database":') === 0;
+			p.strictEqual(has, true, res);
+			done();
+		});
+	});
+	
+	QUnit.test = qTest;
 
 })();

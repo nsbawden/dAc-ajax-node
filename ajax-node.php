@@ -5,7 +5,7 @@ header("Expires: Thu, 1 Jan 1970 01:00:00 GMT"); // Date in the past
 header('Content-type: application/json');
 
 $ot = (object) array();
-$ot->cmd = "/home/nathan/.nave/installed/0.10.31/bin/node";
+$ot->cmd = "~/.nave/installed/4.2.1/bin/node";
 $ot->user = $_SERVER['PHP_AUTH_USER'];
 
 // Require user to be logged in and with a name more than 3 characters long
