@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<!-- include unit tests -->
 	<link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.17.1.css">
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<style>
-			  #qunit {position: relative; max-width: 1024px; margin: 50px auto;}
-			  .qunit-filter button {
-			  	padding: 1px 4px;
-			  }
-			  #qunit-filter-input {
-			  	padding: 1px 4px;
-			  	font-weight: normal;
-			  	width: 120px;
-			  }
-			  .skipped .module-name {color: black;}
-			  .skipped .test-name {color: #00A;}
-			</style>
+	<style>
+		#qunit {position: relative; max-width: 1024px; margin: 50px auto;}
+			.qunit-filter button {
+				padding: 1px 4px;
+			}
+		#qunit-filter-input {
+			padding: 1px 4px;
+			font-weight: normal;
+			width: 120px;
+		}
+		.skipped .module-name {color: black;}
+		.skipped .test-name {color: #00A;}
+		.input {
+			max-width: 1024px;
+			margin: 0 auto;
+		}
+		.input i {
+			font-size: 95%;
+		}
+	</style>
 </head>
+
 <body>
-			<!-- include unit tests -->
-			<center><h3>Press the [Go] button to run tests</h3></center>
-			<div style="max-width:1024px;margin: 0 auto">
-			<ul>
-				<li><input type="text" id="mysql_qunit_uu"> <label>mysql user (required for database tests to run)</label></li>
-				<li><input type="password" id="mysql_qunit_pp"> <label>mysql password (required for database tests to run)</label></li>
-			</ul>
-			</div>
-			<div id="QUnitOuter">
-			<div id="qunit"></div>
-			<div id="qunit-fixture"></div>
-			<script src="//code.jquery.com/qunit/qunit-1.17.1.js"></script>
-			<script src="QUnit.source.php"></script>
-			</div>
-			<!-- end : include unit tests -->
+	<!-- include unit tests -->
+	<center>
+		<h3>Press the [Go] button to run tests</h3>
+	</center>
+	<div class="input">
+		<ul>
+			<li>
+				<input type="text" id="mysql_qunit_uu">
+				<label>mysql user <i>(required for mysql tests to run)</i>
+				</label>
+			</li>
+			<li>
+				<input type="password" id="mysql_qunit_pp">
+				<label>mysql password <i>(required for mysql tests to run)</i>
+				</label>
+			</li>
+		</ul>
+	</div>
+	<div id="QUnitOuter">
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+		<script src="//code.jquery.com/qunit/qunit-1.17.1.js"></script>
+		<script src="QUnit.source.php"></script>
+	</div>
+	<!-- end : include unit tests -->
 </body>
+
 </html>

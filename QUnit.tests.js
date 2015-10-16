@@ -48,13 +48,13 @@
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Basic tests
 
-	QUnit.module("Test ajax-node");
+	QUnit.module("ajax-node");
 
 	zagMap({
 		// Test objects
 	});
 	
-	QUnit.test("bvt - hello world", function(p) {
+	QUnit.test("hello world", function(p) {
 		
 		var done = p.async();
 		
@@ -66,7 +66,7 @@
 		});
 	});
 	
-	QUnit.test("bvt - nodejs error", function(p) {
+	QUnit.test("nodejs error", function(p) {
 		
 		var done = p.async();
 		
@@ -78,7 +78,7 @@
 		});
 	});
 	
-	QUnit.test("bvt - reading stdin", function(p) {
+	QUnit.test("reading stdin", function(p) {
 		
 		var done = p.async();
 		var content = 'abc xyz\nover the clover\n3rd line';
@@ -109,9 +109,9 @@
 	$('#mysql_qunit_pp').val(password);
 	user && password || (QUnit.test = QUnit.skip);
 
-	QUnit.module("Test node mysql");
+	QUnit.module("ajax-node mysql");
 
-	QUnit.test("bvt - read databases", function(p) {
+	QUnit.test("read databases", function(p) {
 		
 		var done = p.async();
 		
