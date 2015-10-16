@@ -1,6 +1,8 @@
 # dAc-ajax-node
 Ajax access to server side node.js proxied through PHP with built-in support to pass content via STDIN or on the command line.
 
+Use ajax-node.js in the browser, ajax-node.php on the server, and requires the node command installed somewhere on the server.
+
 Be sure to change `$ot->cmd =` in ajax-node.php to point to the desired node command. 
 
 #### Notes
