@@ -25,7 +25,7 @@ var AjaxNode = function() {}; // google closure compile magic
 					if (!ret || !ret.result)
 						afterFn(null, ret.error);
 					else {
-						if (opt.dataType === 'json') {
+						if (opt.dataType === 'json' || /^{.*}$/.test(ret.data || '')) {
 							try {
 								ret.data = JSON.parse(ret.data);
 							} catch (ex) {
