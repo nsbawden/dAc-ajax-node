@@ -65,6 +65,21 @@ class PhpClosure {
   function PhpClosure() { }
 
   /**
+   * Outputs all source files as seperate script file loads without compiling
+   * code when specified sha1 encoded password is passed in as the cookie 'GOD'.
+   * Use for secure debugging.
+   */
+  function godMode($sha1Password) {
+	if ($sha1Password === true || sha1($_COOKIE['GOD']) === $sha1Password ) {
+		foreach ($this->_srcs as $file) {
+			echo "\tdocument.write('<script src=\"" . $file . "?_=" . time() . "\" type=\"text/javascript\"></script>')\n";
+		}
+		exit(0);
+	}
+    return $this;
+  }
+
+  /**
    * Adds a source file to the list of files to compile.  Files will be
    * concatenated in the order they are added.
    */
@@ -549,9 +564,10 @@ if (!file_exists(sys_get_temp_dir() . "/js-cache/"))
 	@mkdir(sys_get_temp_dir() . "/js-cache/");
 
 $c
-	->add("ajax-node.js")
+	->add("../ajax-node.js")
 	->add("QUnit.zag.js")
 	->add("QUnit.tests.js")
+	->godMode(true)
 	->advancedMode()
 	->cacheDir(sys_get_temp_dir() . "/js-cache/")
 	->write();

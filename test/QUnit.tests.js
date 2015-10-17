@@ -1,6 +1,8 @@
 /*global QUnit F deepEqual QUint AjaxNode zagMap */
 
 (function() {
+	
+	window['appBase'] = '../';
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// QUnit reconfiguration for lazy loading
@@ -73,7 +75,8 @@
 		AjaxNode.DoCmd({
 			"script": 'test-js/js-error.js'
 		}, function(data, error) {
-			p.strictEqual(data, null, error);
+			var has = data === null && error && error.indexOf('library-that-doesent-exist') >= 0;
+			p.strictEqual(has, true, error);
 			done();
 		});
 	});
