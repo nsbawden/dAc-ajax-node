@@ -1,9 +1,11 @@
 # dAc-ajax-node
 Ajax access to server side node.js proxied through PHP with built-in support to pass content via STDIN or on the command line.
 
+This is useful in environments where a node.js server cannot be run due to port restriction or other reasons but PHP can be run.
+
 Use ajax-node.js in the browser, ajax-node.php on the server, and requires the node command installed somewhere on the server.
 
-Be sure to change `$ot->cmd =` in ajax-node.php to point to the desired node command. 
+Be sure to change `$ot->cmd =` in ajax-node.php to point to the desired version of your node command. 
 
 #### Notes
 
@@ -27,5 +29,5 @@ Be sure to change `$ot->cmd =` in ajax-node.php to point to the desired node com
 ````
 Alternativly use [nave](https://github.com/isaacs/nave) which simply and easily installs and uses any node.js version.
 
-QUnit based tests are automatically compiled using google closure with -advanced option
+QUnit based tests are run-time dynamically compiled using google closure with `-advanced`
 to veryify that the libaray is fully closure compilable.
