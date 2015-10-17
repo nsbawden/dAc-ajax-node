@@ -1,6 +1,7 @@
 <?php
 /**
  * Copyright 2010 Daniel Pupius (http://code.google.com/p/php-closure/)
+ * Copyright 2015 dArtagnans Code (http://code.playnexus.com/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +69,8 @@ EOT;
 
   /**
    * Outputs all source files as seperate script file loads without compiling
-   * code when specified sha1 encoded password is passed in as the cookie 'GOD'.
+   * code when specified sha1 encoded password is passed in as the cookie 'GOD'
+   * or when it === true.
    * Use for secure debugging.
    */
   function godMode($sha1Password) {
