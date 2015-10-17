@@ -94,7 +94,7 @@
 	});
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// MySql tests - auto skipped when no mysql user and password given
+	// MySql tests - auto skipped when no mysql user and password are given on test page
 
 	var qTest = QUnit.test;
 	
